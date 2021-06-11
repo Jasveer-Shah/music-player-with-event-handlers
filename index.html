@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>music player</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="main"><img src="https://i.guim.co.uk/img/media/4b7bba7f8fee506b494c90a49d3b4db33f56fcbc/0_58_6720_4032/master/6720.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=450e48037f244a9eec808a679cdb10b5" alt=""></div> 
+            <div class="controller">
+
+               <div class="album">
+                   <img src="https://png.pngtree.com/element_our/sm/20180530/sm_ae642a0e81203376c4b08f38a31b40f9.jpg" alt="">
+               </div>
+
+              <div class="controls">
+                  <div id="playPause"></div>
+                 
+                 <progress class="progress" max="100" value="0"></progress>
+              </div>
+           
+               <div>
+                   <progress max="100" value="30">
+
+                   </progress>
+               </div>
+
+
+                <div>
+                   <audio id="audio" src="audio/bensound-sunny.mp3" autoplay></audio>
+                </div>
+       </div>
+    </div>
+
+    <script>
+       document.getElementById('playPause').innerHTML = 
+       '<img src="images/icons8-play-64.png" alt="" onclick="play()"/>';
+       const audio = document.getElementById('audio');
+
+        function pause(){
+            document.getElementById('playPause').innerHTML = '<img src="images/icons8-play-64.png" alt="" onclick="play()"/>';
+            const audio = document.getElementById('audio');
+            audio.pause();
+        }
+
+        function play(){
+            document.getElementById('playPause').innerHTML = '<img src="images/icons8-pause-64.png" alt="" onclick="pause()"/>';
+            const audio = document.getElementById('audio');
+            audio.play();
+        }
+
+        audio.addEventListener("timeupdate", (e) => {
+            document.querySelector('.progress').value = audio.currentTime;
+        })
+        audio.volume = 0.30;
+
+    </script>
+</body>
+</html>
